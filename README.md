@@ -47,7 +47,7 @@ VirusTotal is used to enrich relevant endpoint detections with threat intelligen
 ## Technologies Used
 
 - **Wazuh** — Security Information and Event Management (SIEM)
-- **Suricata** — Network Intrusion Detection and Detection Engine
+- **Suricata** — Network Intrusion Detection System (NIDS)
 - **VirusTotal** — Threat Intelligence and File Analysis
 - **Kali Linux** — Security testing and network reconnaissance
 - **Ubuntu 16.04** — Monitored endpoint
@@ -173,14 +173,9 @@ A controlled EICAR test file was created on the monitored Ubuntu endpoint:
 
 Wazuh File Integrity Monitoring detected the creation of the file and generated a security alert.
 
-The VirusTotal integration then analyzed the detected file and returned threat intelligence information to Wazuh, including:
-
-- Detection status
-- Number of positive detections
-- Total number of engines checked
-- MD5 hash
-- SHA1 hash
-- VirusTotal permalink
+The VirusTotal integration submitted the detected file information for
+threat-intelligence enrichment and returned results to Wazuh, including
+detection status, hashes, and a VirusTotal permalink.
 
 ### Detection Workflow
 
@@ -267,7 +262,7 @@ The initial Suricata installation used an older Ubuntu package version that was 
 
 This resulted in rule-loading errors involving unsupported rule keywords.
 
-The issue was resolved by rebuilding the Suricata environment and configuring a compatible ruleset and configuration.
+The issue was resolved by using a compatible Suricata installation and configuring a compatible Emerging Threats ruleset.
 
 ### Wazuh Integration
 
@@ -305,7 +300,7 @@ These troubleshooting steps helped validate the individual components and the co
 - Suricata successfully detected controlled network reconnaissance activity.
 - Suricata events were successfully forwarded to Wazuh through `eve.json`.
 - Wazuh File Integrity Monitoring successfully detected creation of the EICAR test file.
-- VirusTotal successfully enriched the file-related detection with threat intelligence.
+- VirusTotal successfully enriched the file-related detection with additional threat-intelligence information.
 - The two scenarios demonstrated an end-to-end workflow from event generation through detection, investigation, enrichment, and analyst disposition.
 - The controlled testing environment allowed security detections to be validated without targeting unauthorized systems.
 
@@ -335,7 +330,7 @@ Key lessons included:
 - Understanding the relationship between Suricata alerts, JSON event logs, and Wazuh analysis.
 - Practicing alert investigation using source and destination IP addresses, ports, signatures, and event metadata.
 - Understanding how File Integrity Monitoring can identify changes to monitored files.
-- Learning how threat intelligence can provide additional context during an investigation.
+- Learning how Threat intelligence can provide additional context during an investigation.
 - Practicing the distinction between a security detection and the actual disposition of the underlying activity.
 - Developing a structured approach to documenting detection, investigation, analysis, and conclusions.
 - Troubleshooting Linux services, networking, DNS, configuration files, and software compatibility issues.
@@ -347,7 +342,7 @@ Potential extensions to the laboratory include:
 - Add additional Windows endpoints to the Wazuh environment.
 - Develop custom Wazuh detection rules for specific security events.
 - Expand Suricata monitoring and detection coverage.
-- Integrate additional threat-intelligence sources.
+- Integrate additional Threat-intelligence sources.
 - Create automated alert-response workflows.
 - Add dashboards for security event trends and detection metrics.
 - Simulate additional SOC scenarios such as brute-force attempts, suspicious authentication activity, and web-based attacks.
