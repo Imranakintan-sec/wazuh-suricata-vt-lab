@@ -210,7 +210,7 @@ The source system was an authorized laboratory machine, and the scan was intenti
 
 Detailed investigation notes are available in:
 
-`network-scan-investigation.md`
+`Network-Scan-Investigation.md`
 
 ### Scenario 2 — EICAR File Detection and Threat Intelligence Enrichment
 
